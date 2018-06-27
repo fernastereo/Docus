@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\responses;
+use App\Response;
 use Illuminate\Http\Request;
 
-class ResponsesController extends Controller
+class ResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class ResponsesController extends Controller
      * @param  \App\responses  $responses
      * @return \Illuminate\Http\Response
      */
-    public function show(responses $responses)
+    public function show(Response $response)
     {
         //
     }
@@ -55,7 +55,7 @@ class ResponsesController extends Controller
      * @param  \App\responses  $responses
      * @return \Illuminate\Http\Response
      */
-    public function edit(responses $responses)
+    public function edit(Response $response)
     {
         //
     }
@@ -67,7 +67,7 @@ class ResponsesController extends Controller
      * @param  \App\responses  $responses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, responses $responses)
+    public function update(Request $request, Response $response)
     {
         //
     }
@@ -78,7 +78,7 @@ class ResponsesController extends Controller
      * @param  \App\responses  $responses
      * @return \Illuminate\Http\Response
      */
-    public function destroy(responses $responses)
+    public function destroy(Response $response)
     {
         //
     }

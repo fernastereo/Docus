@@ -6,9 +6,10 @@
 			<div class="card">
 				<form action="{{ route('documents.store') }}" method="post" enctype="multipart/form-data">
         			@csrf
-					<div class="card-header">
-						Nuevo Documento
-					</div>
+					<div class="card-header d-flex justify-content-between">
+			          <div>Nuevo Documento</div>
+			          <a href="{{ route('home') }}" class="btn btn-success btn-sm"><i class="fas fa-home"></i> Regresar</a>
+			        </div>
 					<div class="card-body">
 						@include('partials.success')
 	            		@include('partials.errors')					
@@ -70,7 +71,7 @@
 						</div>
 					</div>
 					<div class="card-footer d-flex justify-content-end">
-	            		<button type="submit" class="btn btn-primary btn-sm">Guardar Datos</button>	
+	            		<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
 					</div>
 				</form>
 			</div>

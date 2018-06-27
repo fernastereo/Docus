@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\attachments;
+use App\Attachment;
 use Illuminate\Http\Request;
 
-class AttachmentsController extends Controller
+class AttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class AttachmentsController extends Controller
      * @param  \App\attachments  $attachments
      * @return \Illuminate\Http\Response
      */
-    public function show(attachments $attachments)
+    public function show(Attachment $attachment)
     {
         //
     }
@@ -55,7 +55,7 @@ class AttachmentsController extends Controller
      * @param  \App\attachments  $attachments
      * @return \Illuminate\Http\Response
      */
-    public function edit(attachments $attachments)
+    public function edit(Attachment $attachment)
     {
         //
     }
@@ -67,7 +67,7 @@ class AttachmentsController extends Controller
      * @param  \App\attachments  $attachments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, attachments $attachments)
+    public function update(Request $request, Attachment $attachment)
     {
         //
     }
@@ -78,7 +78,7 @@ class AttachmentsController extends Controller
      * @param  \App\attachments  $attachments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(attachments $attachments)
+    public function destroy(Attachment $attachment)
     {
         //
     }

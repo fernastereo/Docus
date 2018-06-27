@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function documents(){
-        return $this->hasMany(documents::class);
+        return $this->hasMany(Document::class);
     }
 }
