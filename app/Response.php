@@ -17,4 +17,12 @@ class Response extends Model
     public function document(){
     	return $this->belongsTo(Document::class);
     }
+
+    public function getFilenameAttribute($filename){
+        if(!$filename || starts_with($filename, 'http')){
+            return $filename;
+        }
+
+        return \Storage::url($filename);
+    }
 }

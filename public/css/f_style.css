@@ -7,3 +7,12 @@
 .verde{
 	color: green;
 }
+
+table{
+  table-layout: fixed;
+}
+
+.miTabla th{
+  width: 180px;
+  overflow: auto;
+}

@@ -7,7 +7,7 @@
 				<form action="{{ route('documents.store') }}" method="post" enctype="multipart/form-data">
         			@csrf
 					<div class="card-header d-flex justify-content-between">
-			          <div>Nuevo Documento</div>
+			          <div><h5>Nuevo Documento</h5></div>
 			          <a href="{{ route('home') }}" class="btn btn-success btn-sm"><i class="fas fa-home"></i> Regresar</a>
 			        </div>
 					<div class="card-body">

@@ -92,6 +92,12 @@ class DocumentController extends Controller
         return view('documents.show', ['document' => $document]);
     }
 
+    public function showresponse(Document $document)
+    {
+        // dd($document);
+        return view('documents.showresponse', ['document' => $document]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -135,8 +141,6 @@ class DocumentController extends Controller
 
     public function responsedocument(Request $request)
     {
-
-
         $now = new \DateTime();   
         $response = Response::create([
             'date'          => $now->format('Y-m-d H:i:s'),

@@ -7,7 +7,7 @@
 				<form action="{{ route('documents.response.document') }}" method="post" enctype="multipart/form-data">
         			@csrf
 					<div class="card-header d-flex justify-content-between">
-			          <div>Responder a Documento</div>
+			          <div><h5>Responder a Documento</h5></div>
 			          <a href="{{ route('home') }}" class="btn btn-success btn-sm"><i class="fas fa-home"></i> Regresar</a>
 			        </div>
 					<div class="card-body">
@@ -65,7 +65,7 @@
 							<div class="form-group col-md-6">
 								<label for="filename" class="form-control-sm">Archivo:</label>
 								@if($document->filename != '')
-									<a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">Ver Archivo Adjunto</a>
+									<a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">Ver Documento Radicado</a>
 								@endif
 							</div>
 						</div>
@@ -73,7 +73,7 @@
 							<div class="form-row col-md-12">
 								<div class="form-group col-md-12">
 									<label for="sender" class="form-control-sm">Observaciones:</label>
-		        		            <textarea class="form-control" rows="3" placeholder="Observaciones" id="comments" name="comments">{{ old('comments', $document->comments) }}</textarea>
+		        		            <textarea class="form-control" rows="3" readonly placeholder="Observaciones" id="comments" name="comments">{{ old('comments', $document->comments) }}</textarea>
 								</div>
 							</div>
 						</div>
@@ -88,7 +88,7 @@
 						</div>
 						<div class="form-row col-md-12">
 							<div class="form-group col-md-6">
-								<label for="codedocument" class="form-control-sm">Radicado:</label>
+								<label for="codedocument" class="form-control-sm">Código Documento:</label>
 	        		            <input class="form-control form-control-sm" type="text" id="codedocument" name="codedocument" value="{{ old('codedocument') }}"></input>
 							</div>
 						

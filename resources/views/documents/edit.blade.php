@@ -8,7 +8,7 @@
 					@method('put')
         			@csrf
 					<div class="card-header d-flex justify-content-between">
-			          <div>Documento Radicado</div>
+			          <div><h5>Documento Radicado</h5></div>
 			          <a href="{{ route('home') }}" class="btn btn-success btn-sm"><i class="fas fa-home"></i> Regresar</a>
 			        </div>
 					<div class="card-body">
@@ -87,7 +87,7 @@
 							<div class="form-group col-md-6">
 								<label for="filename" class="form-control-sm">Archivo:</label>
 								@if($document->filename != '')
-									<a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">Ver Archivo Adjunto</a>
+									<a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">Ver Documento Radicado</a>
 								@endif
 							</div>
 						</div>
