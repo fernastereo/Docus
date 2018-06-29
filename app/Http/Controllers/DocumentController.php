@@ -62,9 +62,9 @@ class DocumentController extends Controller
         $codedocument = 'CU1' . substr($date, 0, 4) . substr($date, 5, 2) . substr($date, 8, 2) . '-' . str_pad($document->id, 4, "0", STR_PAD_LEFT);
         $document->codedocument = $codedocument;
 
-        if($request->hasFile('filename')){
+        /*if($request->hasFile('filename')){
             $document->filename = $request->file('filename')->store('public/inbox');
-        }
+        }*/
         $document->save();
 
         $reception = Reception::create([
