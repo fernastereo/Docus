@@ -67,7 +67,7 @@ class DocumentController extends Controller
 
             $fileToFtp = substr($document->filename, 8);
             
-            Storage::disk('ftp')->put('/inbox/', $request->file('filename'));
+            //Storage::disk('ftp')->put('/inbox/', $request->file('filename'));
             $document->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;
         }
         $document->save();
