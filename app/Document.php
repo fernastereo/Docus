@@ -47,14 +47,14 @@ class Document extends Model
         return $this->hasMany(Reception::class);
     }
 
-    public function getFilenameAttribute($filename){
+/*    public function getFilenameAttribute($filename){
         if(!$filename || starts_with($filename, 'http')){
             return $filename;
         }
 
         return \Storage::url($filename);
     }
-
+*/
     public function userenc($id){
         $user = User::select('name')->where('id', $id)->first();
         if($user){

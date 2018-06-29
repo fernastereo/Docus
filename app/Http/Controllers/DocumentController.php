@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Document;
 use App\Category;
@@ -42,7 +42,7 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $document = Document::create([
             'typedocument_id'   => $request->input('typedocument_id'),
             'daterec'           => $request->input('daterec'),
@@ -64,6 +64,11 @@ class DocumentController extends Controller
 
         if($request->hasFile('filename')){
             $document->filename = $request->file('filename')->store('public/inbox');
+
+            $fileToFtp = substr($document->filename, 8);
+            
+            Storage::disk('ftp')->put('/inbox/', $request->file('filename'));
+            $document->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;
         }
         $document->save();
 
@@ -150,6 +155,11 @@ class DocumentController extends Controller
 
         if($request->hasFile('filename')){
             $response->filename = $request->file('filename')->store('public/outbox');
+
+            $fileToFtp = substr($response->filename, 8);
+            
+            Storage::disk('ftp')->put('/outbox/', $request->file('filename'));
+            $response->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;
         }
         $response->save();
 

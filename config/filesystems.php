@@ -64,6 +64,13 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => 'ftp.curaduria1santamarta.co',
+            'username' => 'curaduria1sm',
+            'password' => 'aA0987!1',
+            'root'     => '/httpdocs/public',
+        ],
     ],
 
 ];
