@@ -63,7 +63,7 @@ class DocumentController extends Controller
         $document->codedocument = $codedocument;
 
         if($request->hasFile('filename')){
-            $document->filename = $request->file('filename')->store('public');
+            $document->filename = $request->file('filename')->store('public/inbox');
         }
         $document->save();
 
@@ -149,7 +149,7 @@ class DocumentController extends Controller
         ]);
 
         if($request->hasFile('filename')){
-            $response->filename = $request->file('filename')->store('public');
+            $response->filename = $request->file('filename')->store('public/outbox');
         }
         $response->save();
 
