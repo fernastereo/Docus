@@ -43,7 +43,6 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         
-        
         $document = Document::create([
             'typedocument_id'   => $request->input('typedocument_id'),
             'daterec'           => $request->input('daterec'),

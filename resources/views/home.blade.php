@@ -17,6 +17,7 @@
             </div>
           @endif
           <div class="table-responsive-sm">
+            <input type="hidden" id="copies" name="copies" value="1">
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
@@ -79,4 +80,5 @@
     </div>
   </div>
 </div>
+<script>
 @endsection

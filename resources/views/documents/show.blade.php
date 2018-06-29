@@ -12,7 +12,8 @@
 			        </div>
 					<div class="card-body">
 						@include('partials.success')
-	            		@include('partials.errors')					
+	            		@include('partials.errors')	
+	            		<input type="hidden" id="copies" name="copies" value="2">				
 						<div class="form-row col-md-12">
 							<div class="form-group col-md-3">
 			                    <label for="codedocument" class="form-control-sm">Radicado:</label>
@@ -60,11 +61,14 @@
 						</div>
 					</div>
 					<div class="card-footer d-flex justify-content-end">
-	            		<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-barcode"></i> Imprimir Recibido</button>	
+	            		<button id="printButton" class="btn btn-primary btn-sm"><i class="fas fa-barcode"></i> Imprimir Recibido</button>
 					</div>
 				{{-- </form> --}}
 			</div>
 		</div>
 	</div>
 </div>
+<script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js"
+        type="text/javascript" charset="UTF-8"> </script>
+<script src="{{ asset('js/printlabel.js') }}" defer></script>
 @endsection
