@@ -53,8 +53,8 @@ class Document extends Model
         }
 
         return \Storage::url($filename);
-    }
-*/
+    }*/
+
     public function userenc($id){
         $user = User::select('name')->where('id', $id)->first();
         if($user){

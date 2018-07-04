@@ -63,12 +63,24 @@ class DocumentController extends Controller
         $document->codedocument = $codedocument;
 
         if($request->hasFile('filename')){
-            $document->filename = $request->file('filename')->store('public/inbox');
+            //Guardo el contenido del archivo en la variable $fileContents:
+            $fileContents = $request->file('filename');
+            //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
+            $storagePath = Storage::disk('s3')->put('inbox', $fileContents, 'public');
+            //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
+            $url = Storage::disk('s3')->url($storagePath);
+            //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
+            $document->filename = $url;
 
-            $fileToFtp = substr($document->filename, 6);
-            
+            /*$filename = 'algo.pdf';
+            $filen = $request->file('filename');
+            $t = Storage::disk('s3')->put($filename, file_get_contents($filen), 'public');
+            $filename = Storage::disk('s3')->url($filename);
+            $document->filename = $filename;*/
+
+            /*$fileToFtp = substr($document->filename, 6);
             Storage::disk('ftp')->put('inbox/', $request->file('filename'));
-            $document->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;
+            $document->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;*/
         }
         $document->save();
 
@@ -154,12 +166,14 @@ class DocumentController extends Controller
         ]);
 
         if($request->hasFile('filename')){
-            $response->filename = $request->file('filename')->store('public/outbox');
-
-            $fileToFtp = substr($response->filename, 8);
-            
-            Storage::disk('ftp')->put('/outbox/', $request->file('filename'));
-            $response->filename = 'http://www.curaduria1santamarta.co/public' . $fileToFtp;
+            //Guardo el contenido del archivo en la variable $fileContents:
+            $fileContents = $request->file('filename');
+            //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
+            $storagePath = Storage::disk('s3')->put('outbox', $fileContents, 'public');
+            //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
+            $url = Storage::disk('s3')->url($storagePath);
+            //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
+            $response->filename = $url;
         }
         $response->save();
 
