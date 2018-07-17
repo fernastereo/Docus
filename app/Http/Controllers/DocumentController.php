@@ -10,6 +10,7 @@ use App\Reception;
 use App\Response;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateDocumentRequest;
 
 class DocumentController extends Controller
 {
@@ -40,7 +41,7 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateDocumentRequest $request)
     {
 
         $document = Document::create([
