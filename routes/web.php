@@ -21,8 +21,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	Route::resource('documents', 'DocumentController');
-	Route::get('documents/{document}/response', 'DocumentController@response')->name('documents.response');	
+	Route::get('documents/{document}/response', 'DocumentController@response')->name('documents.response');
+	Route::get('documents/{document}/filename', 'DocumentController@filename')->name('documents.filename');
 	Route::get('documents/showresponse/{document}', 'DocumentController@showresponse')->name('documents.showresponse');	
 	Route::post('documents/responsedocument', 'DocumentController@responsedocument')->name('documents.response.document');	
-
+	Route::put('documents/updatefilename/{document}', 'DocumentController@updatefilename')->name('documents.updatefilename');
 });

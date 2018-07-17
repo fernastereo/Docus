@@ -28,6 +28,7 @@
                   <th scope="col">Origen</th>
                   <th scope="col">Encargado</th>
                   <th scope="col">Estado</th>
+                  <th scope="col" style="width: 50px;"></th>
                   @if(Auth::user()->profile_id == 1)
                     <th scope="col"></th>
                   @endif
@@ -37,7 +38,13 @@
               <tbody>
                 @foreach($documents as $document)
                   <tr>
-                    <th scope="row"><a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">{{ $document->codedocument }}</a></th>
+                    <th scope="row">
+                      @if(!$document->filename)
+                        {{ $document->codedocument }}
+                      @else
+                        <a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">{{ $document->codedocument }}</a>
+                      @endif
+                    </th>
                     <td>{{ $document->typedocument->name }}</td>
                     <td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>
                     <td>
@@ -49,6 +56,11 @@
                         @elseif($document->state_id == 2) <span class="badge badge-warning">{{ $document->state->name }}</span>
                         @elseif($document->state_id == 3) <span class="badge badge-success">{{ $document->state->name }}</span>
                         @endif
+                    </td>
+                    <td>
+                      @if(!$document->filename)
+                        <a href="{{ route('documents.filename', $document->id) }}" title="Volver a cargar el documento" class="btn btn-warning btn-sm"><i class="far fa-file-alt"></i> </a>
+                      @endif
                     </td>
                     @if(Auth::user()->profile_id == 1)
                       <td>
