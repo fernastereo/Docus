@@ -44,6 +44,7 @@
                       @else
                         <a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">{{ $document->codedocument }}</a>
                       @endif
+                      <small class="text-capitalize">Radicado Por: {{ $document->reception->user->name }}</small>
                     </th>
                     <td>{{ $document->typedocument->name }}</td>
                     <td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>

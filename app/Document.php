@@ -43,8 +43,8 @@ class Document extends Model
     	return $this->hasMany(Response::class);
     }
 
-    public function receptions(){
-        return $this->hasMany(Reception::class);
+    public function reception(){
+        return $this->hasOne(Reception::class);
     }
 
 /*    public function getFilenameAttribute($filename){

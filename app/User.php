@@ -30,4 +30,8 @@ class User extends Authenticatable
     public function documents(){
         return $this->hasMany(Document::class);
     }
+
+    public function receptions(){
+        return $this->hasMany(Reception::class);
+    }
 }

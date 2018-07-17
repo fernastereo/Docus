@@ -24,7 +24,7 @@ class CreateDocumentsTable extends Migration
             $table->integer('pages')->default(1);
             $table->string('project')->nullable();
             $table->integer('category_id')->unsigned();
-            $table->string('comments')->nulleable();
+            $table->string('comments')->nullable();
             $table->integer('userrec_id')->unsigned();
             $table->integer('userenc_id')->unsigned();
             $table->timestamps();
