@@ -64,7 +64,7 @@ class DocumentController extends Controller
         $document->codedocument = $codedocument;
 
         if($request->hasFile('filename')){
-            //Guardo el contenido del archivo en la variable $fileContents:
+            //Se Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
             $storagePath = Storage::disk('s3')->put('inbox', $fileContents, 'public');
