@@ -30,10 +30,13 @@ class CreateDocumentRequest extends FormRequest
             'sender' => 'required',
             'subject' => 'required',
             'pages' => 'required',
-            'filename' => 'required',
+            'filename' => 'required|file|max:20480',
         ];
     }
 
+    //195-55 R16 maxis:220-200 interstate:195
+
+    //185-55 R16 toyo: 239
     public function messages(){
         return [
             'typedocument_id.required' => 'Debe elegir un Tipo de Documento a radicar',
