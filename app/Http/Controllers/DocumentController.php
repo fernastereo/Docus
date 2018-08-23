@@ -146,7 +146,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        dd($request);
+        // dd($request);
         $document->update([
             'user_id'       => $request->input('user_id'),
             'category_id'   => $request->input('category_id'),
