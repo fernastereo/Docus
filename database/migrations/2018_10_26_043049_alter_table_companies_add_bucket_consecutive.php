@@ -15,7 +15,7 @@ class AlterTableCompaniesAddBucketConsecutive extends Migration
     {
         Schema::table('companies', function (Blueprint $table) {
             $table->string('bucket')->nullable();
-            $table->integer('consecutive');
+            $table->integer('consecutive')->nullable();
         });
     }
 
