@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
+use App\Profile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,6 +37,13 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    public function showRegistrationForm(){
+
+        $companies = Company::get(); //where('id', '>', 1)->
+        $profiles = Profile::get();
+        return view('auth.register', ['companies' => $companies, 'profiles' => $profiles]);
+    }
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -64,10 +73,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'name' => strtoupper($data['name']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'profile_id' => 1,
+            'profile_id' => $data['profile_id'],
+            'company_id' => $data['company_id']
         ]);
     }
 }

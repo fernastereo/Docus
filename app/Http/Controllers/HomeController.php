@@ -26,9 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->profile_id == 3){
-            $documents = Document::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
+            $documents = Document::where([
+                ['user_id', Auth::user()->id], 
+                ['company_id', Auth::user()->company_id]
+            ])->orderBy('created_at', 'desc')->paginate(10);
         }else{
-            $documents = Document::orderBy('created_at', 'desc')->paginate(10);
+            $documents = Document::where('company_id', Auth::user()->company_id)->orderBy('created_at', 'desc')->paginate(10);
         }
         //dd($documents);
         return view('home', ['documents' => $documents]);

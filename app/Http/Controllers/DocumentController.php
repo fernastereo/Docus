@@ -9,6 +9,7 @@ use App\Typedocument;
 use App\Reception;
 use App\Response;
 use App\User;
+use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateDocumentRequest;
 
@@ -30,7 +31,8 @@ class DocumentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
+        $now = new \DateTime();   
         $typedocuments = Typedocument::get();
         return view('documents.create', ['typedocuments' => $typedocuments]);
     }
@@ -57,17 +59,19 @@ class DocumentController extends Controller
             'comments'          => '',
             'user_id'           => 0,
             'state_id'          => 1,
+            'company_id'        => Auth::user()->company_id
         ]);
 
         $date = $request->input('daterec');
-        $codedocument = 'CU1' . substr($date, 0, 4) . substr($date, 5, 2) . substr($date, 8, 2) . '-' . str_pad($document->id, 4, "0", STR_PAD_LEFT);
+        $codedocument = Auth::user()->company->prefixcdocument . substr($date, 0, 4) . substr($date, 5, 2) . substr($date, 8, 2) . '-' . str_pad(Auth::user()->company->consecutive, 4, "0", STR_PAD_LEFT);
         $document->codedocument = $codedocument;
+        $consecutive = Auth::user()->company->consecutive;
 
         if($request->hasFile('filename')){
             //Se Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
-            $storagePath = Storage::disk('s3')->put('inbox', $fileContents, 'public');
+            $storagePath = Storage::disk('s3')->put(Auth::user()->company->bucket . '/inbox', $fileContents, 'public');
             //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
             $url = Storage::disk('s3')->url($storagePath);
             //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
@@ -89,6 +93,10 @@ class DocumentController extends Controller
             'document_id'       => $document->id,
             'user_id'           => Auth::user()->id,
         ]);
+
+        //Actualizar el consecutivo
+        $consecutive++;
+        $company = Company::where('id', Auth::user()->company_id)->update(['consecutive' => $consecutive]);
 
         if($document){
             return redirect()->route('documents.show', $document->id)->with('success', 'Documento guardado');
@@ -123,7 +131,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        $users = User::where('profile_id', 3)->get();
+        $users = User::where([['profile_id', 3], ['company_id', Auth::user()->company_id]])->get();
         $categories = Category::get();
         return view('documents.edit', ['document' => $document, 'users' => $users, 'categories' => $categories]);
     }
@@ -146,7 +154,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        // dd($request);
+        //dd($request);
         $document->update([
             'user_id'       => $request->input('user_id'),
             'category_id'   => $request->input('category_id'),
@@ -167,7 +175,7 @@ class DocumentController extends Controller
             //Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
-            $storagePath = Storage::disk('s3')->put('inbox', $fileContents, 'public');
+            $storagePath = Storage::disk('s3')->put(Auth::user()->company->bucket . '/inbox', $fileContents, 'public');
             //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
             $url = Storage::disk('s3')->url($storagePath);
             //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
@@ -184,7 +192,7 @@ class DocumentController extends Controller
 
     public function responsedocument(Request $request)
     {
-        $now = new \DateTime();   
+        $now = new \DateTime();
         $response = Response::create([
             'date'          => $now->format('Y-m-d H:i:s'),
             'comments'      => $request->input('response'),
@@ -196,7 +204,7 @@ class DocumentController extends Controller
             //Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
-            $storagePath = Storage::disk('s3')->put('outbox', $fileContents, 'public');
+            $storagePath = Storage::disk('s3')->put(Auth::user()->company->bucket . '/outbox', $fileContents, 'public');
             //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
             $url = Storage::disk('s3')->url($storagePath);
             //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla

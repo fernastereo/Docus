@@ -76,23 +76,26 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <!--<div class="title m-b-md">
                     Docus
                 </div>
                 <div class="subtitle m-b-md">
                     Sistema de Gestión de Correspondencia
-                </div>
+                </div>-->
 
                 <div class="links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('companies.index') }}">Companies</a>
+                        <a href="{{ route('register') }}">New User</a>
                     @endauth
                 </div>
             </div>
