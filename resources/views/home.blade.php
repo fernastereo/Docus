@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
-          <div><h5>Dashboard</h5></div>
+          <div><h5>Dashboard - {{ Auth::user()->company->name }}</h5></div>
           <a href="{{ route('documents.create') }}" class="btn btn-primary btn-sm"><i class="far fa-file-alt"></i> Nuevo Documento</a>
         </div>
 

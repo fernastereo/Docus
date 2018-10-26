@@ -21,6 +21,8 @@ class Document extends Model
     	'user_id',
     	'state_id',
     	'filename',
+        'company_id',
+        'consecutive'
     ];
 
     public function typedocument(){
@@ -45,6 +47,10 @@ class Document extends Model
 
     public function reception(){
         return $this->hasOne(Reception::class);
+    }
+
+    public function company(){
+        return $this->belongsTo(Company::class);
     }
 
 /*    public function getFilenameAttribute($filename){

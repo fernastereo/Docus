@@ -10,7 +10,23 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
-
+                        <div class="form-group row">
+                            <label for="company_id" class="col-md-4 col-form-label text-md-right">Company:</label>
+                            <div class="col-md-6">
+                            @if($companies!= null)
+                              <select id="company_id" class="form-control" name="company_id">
+                                <option value="0" selected disabled>-- Select --</option>
+                                @foreach($companies as $company)
+                                  @if($company->id == old('company_id'))
+                                    <option value="{{ $company->id }}" selected>{{ $company->name }}</option>
+                                  @else
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                  @endif
+                                @endforeach
+                              </select>
+                            @endif
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -58,6 +74,24 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="profile_id" class="col-md-4 col-form-label text-md-right">Profile:</label>
+                            <div class="col-md-6">
+                            @if($profiles!= null)
+                              <select id="profile_id" class="form-control" name="profile_id">
+                                <option value="0" selected disabled>-- Select --</option>
+                                @foreach($profiles as $profile)
+                                  @if($profile->id == old('profile_id'))
+                                    <option value="{{ $profile->id }}" selected>{{ $profile->name }}</option>
+                                  @else
+                                    <option value="{{ $profile->id }}">{{ $profile->name }}</option>
+                                  @endif
+                                @endforeach
+                              </select>
+                            @endif
                             </div>
                         </div>
 
