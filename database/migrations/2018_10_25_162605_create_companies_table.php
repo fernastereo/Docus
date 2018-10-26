@@ -30,7 +30,7 @@ class CreateCompaniesTable extends Migration
         ]);         
 
         Schema::table('documents', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned();
+            $table->integer('company_id')->nullable()->unsigned();
         });
         DB::table('documents')->update(['company_id' => 1]);
         Schema::table('documents', function (Blueprint $table) {
@@ -38,7 +38,7 @@ class CreateCompaniesTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned();
+            $table->integer('company_id')->nullable()->unsigned();
         });
         DB::table('users')->update(['company_id' => 1]);
         Schema::table('users', function (Blueprint $table) {

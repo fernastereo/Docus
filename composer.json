@@ -51,12 +51,10 @@
             "@php artisan package:discover"
         ],
         "compile": [
-            "php artisan migrate --force",
-            "php artisan storage:link"
+            "php artisan migrate --force"
         ],
         "post-install-cmd": [
-             "php artisan clear-compiled",
-             "chmod -R 777 storage/"
+             "php artisan clear-compiled"
         ]
     },
     "config": {
