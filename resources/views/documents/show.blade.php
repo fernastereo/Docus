@@ -14,6 +14,7 @@
 						@include('partials.success')
 	            		@include('partials.errors')	
 	            		<input type="hidden" id="copies" name="copies" value="2">				
+	            		<input type="hidden" id="company" name="company" value="{{ Auth::user()->company->name }}">
 						<div class="form-row col-md-12">
 							<div class="form-group col-md-3">
 			                    <label for="codedocument" class="form-control-sm">Radicado:</label>

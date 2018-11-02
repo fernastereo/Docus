@@ -22,6 +22,7 @@
     // called when the document completly loaded
     function onload()
     {
+        var company = document.getElementById('company');
         var codeDocument = document.getElementById('codedocument');
         var daterec = document.getElementById('daterec');
         var subject = document.getElementById('subject');
@@ -241,6 +242,8 @@
                 var label = dymo.label.framework.openLabelXml(labelXml);
 
                 // set label text
+                label.setObjectText("asunto_3", company.value.substring(0, 21));
+                label.setObjectText("asunto_4", company.value.substring(21));
                 label.setObjectText("cbarras", codedocument.value);
                 label.setObjectText("fecha", daterec.value)
                 label.setObjectText("asunto", 'ASUNTO: ' + subject.value)
