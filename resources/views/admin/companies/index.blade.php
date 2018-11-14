@@ -28,6 +28,7 @@
                   <th scope="col">Prefix</th>
                   <th scope="col">Bucket</th>
                   <th scope="col">Consec</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -42,6 +43,7 @@
                     <td>{{ $company->prefixcdocument }}</td>
                     <td>{{ $company->bucket }}</td>
                     <td>{{ $company->consecutive }}</td>
+                    <td><a href="{{ route('companies.edit', $company->id) }}" class="btn btn-success btn-sm">Editar</a></td>
                   </tr>
                 @endforeach
               </tbody>

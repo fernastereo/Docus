@@ -71,7 +71,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('admin.companies.edit', ['company' => $company]);
     }
 
     /**
@@ -83,7 +83,20 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update([
+            'name'              => strtoupper($request->input('name')),
+            'email'             => $request->input('email'),
+            'prefixcdocument'   => $request->input('prefixcdocument'),
+            'startdate'         => $request->input('startdate'),
+            'bucket'            => $request->input('bucket'),
+            'consecutive'       => $request->input('consecutive')
+        ]);
+
+        if($company){
+            return redirect()->route('companies.index')->with('success', 'Company Updated Succesfully');
+        }
+
+        return back()->withInput()->with('errors', 'Ooops I did it again!');
     }
 
     /**
