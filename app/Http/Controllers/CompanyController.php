@@ -40,8 +40,8 @@ class CompanyController extends Controller
             'name'              => strtoupper($request->input('name')),
             'email'             => $request->input('email'),
             'prefixcdocument'   => $request->input('prefixcdocument'),
-            'startdate'         => $request->input('startdate')
-            'bucket'            => $request->input('bucket')
+            'startdate'         => $request->input('startdate'),
+            'bucket'            => $request->input('bucket'),
             'consecutive'       => $request->input('consecutive')
         ]);
         
