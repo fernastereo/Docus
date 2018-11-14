@@ -41,6 +41,8 @@ class CompanyController extends Controller
             'email'             => $request->input('email'),
             'prefixcdocument'   => $request->input('prefixcdocument'),
             'startdate'         => $request->input('startdate')
+            'bucket'            => $request->input('bucket')
+            'consecutive'       => $request->input('consecutive')
         ]);
         
         if($company){

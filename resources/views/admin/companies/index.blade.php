@@ -26,6 +26,8 @@
                   <th scope="col">Email</th>
                   <th scope="col">Start Date</th>
                   <th scope="col">Prefix</th>
+                  <th scope="col">Bucket</th>
+                  <th scope="col">Consec</th>
                 </tr>
               </thead>
               <tbody>
@@ -38,6 +40,8 @@
                     <td>{{ $company->email }}</td>
                     <td>{{ date('d-m-Y', strtotime($company->startdate)) }}</td>
                     <td>{{ $company->prefixcdocument }}</td>
+                    <td>{{ $company->bucket }}</td>
+                    <td>{{ $company->consecutive }}</td>
                   </tr>
                 @endforeach
               </tbody>

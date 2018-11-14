@@ -67,6 +67,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="bucket" class="col-md-4 col-form-label text-md-right">Bucket</label>
+
+                            <div class="col-md-6">
+                                <input id="bucket" type="text" class="form-control{{ $errors->has('bucket') ? ' is-invalid' : '' }}" name="bucket" value="{{ old('bucket') }}" required autofocus>
+
+                                @if ($errors->has('bucket'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('bucket') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="consecutive" class="col-md-4 col-form-label text-md-right">Consecutive</label>
+
+                            <div class="col-md-6">
+                                <input id="consecutive" type="text" class="form-control{{ $errors->has('consecutive') ? ' is-invalid' : '' }}" name="consecutive" value="{{ old('consecutive') }}" required autofocus>
+
+                                @if ($errors->has('consecutive'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('consecutive') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
