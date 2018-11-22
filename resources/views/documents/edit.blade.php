@@ -90,6 +90,7 @@
 								@if($document->filename != '')
 									<a href="{{ $document->filename }}" target="_blank" onclick="window.open(this.href, this.target, 'width=1200,height=600'); return false;">Ver Documento Radicado</a>
 								@endif
+	        		            <input class="form-control form-control-sm" type="file" id="filename" name="filename" value="{{ old('$document->filename') }}"></input>
 							</div>
 						</div>
 						<div class="form-row col-md-12">

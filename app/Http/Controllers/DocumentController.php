@@ -156,11 +156,27 @@ class DocumentController extends Controller
     {
         //dd($request);
         $document->update([
-            'user_id'       => $request->input('user_id'),
-            'category_id'   => $request->input('category_id'),
             'comments'      => $request->input('comments'),
-            'state_id'      => 2,
         ]);
+
+        if($request->input('user_id')){
+            $document->user_id = $request->input('user_id');
+            $document->state_id = 2;
+        }
+        if($request->input('category_id')){
+            $document->category_id = $request->input('category_id');
+        }
+        if($request->hasFile('filename')){
+            //Se Guardo el contenido del archivo en la variable $fileContents:
+            $fileContents = $request->file('filename');
+            //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
+            $storagePath = Storage::disk('s3')->put(Auth::user()->company->bucket . '/inbox', $fileContents, 'public');
+            //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
+            $url = Storage::disk('s3')->url($storagePath);
+            //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
+            $document->filename = $url;
+        }
+        $document->save();
 
         if($document){
             return redirect()->route('home');
