@@ -242,8 +242,11 @@
                 var label = dymo.label.framework.openLabelXml(labelXml);
 
                 // set label text
-                label.setObjectText("asunto_3", company.value.substring(0, 21));
-                label.setObjectText("asunto_4", company.value.substring(21));
+                var companyName = company.value;
+                var n = companyName.search('-');
+
+                label.setObjectText("asunto_3", companyName.substr(0, n));
+                label.setObjectText("asunto_4", companyName.substr(n + 1));
                 label.setObjectText("cbarras", codedocument.value);
                 label.setObjectText("fecha", daterec.value)
                 label.setObjectText("asunto", 'ASUNTO: ' + subject.value)
