@@ -131,7 +131,10 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        $users = User::where([['profile_id', 3], ['company_id', Auth::user()->company_id]])->get();
+        $users = User::where([
+            ['company_id', Auth::user()->company_id]
+        ])->whereIn('profile_id', [1, 3])
+        ->get();
         $categories = Category::get();
         return view('documents.edit', ['document' => $document, 'users' => $users, 'categories' => $categories]);
     }
