@@ -46,7 +46,7 @@
                       @endif
                       <small class="text-capitalize">Radicado Por: {{ $document->reception->user->name }}</small>
                     </th>
-                    <td>{{ $document->typedocument->name }}</td>
+                    <td></td>
                     <td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>
                     <td>
                       <i class="@if($document->category_id == 1)fas fa-exclamation-triangle rojo @elseif($document->category_id == 2)fas fa-check-square amarillo @elseif($document->category_id == 3)fas fa-check-circle verde @endif"></i> 
