@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Typedocument extends Model
 {
     public function documents(){
-    	return $this->hasMany(Document::class);
+    	return $this->hasMany('App\Document');
     }
 }
