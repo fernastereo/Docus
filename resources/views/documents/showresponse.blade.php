@@ -17,8 +17,8 @@
                   <td>{{ $document->codedocument }}</td>
                 </tr>
                 <tr>
-                	<th>Fecha de Recibo:</th>
-                	<td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>
+                  <th>Fecha de Recibo:</th>
+                  <td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>
                 </tr>
                 <tr>
                 	<th>Tipo de documento:</th>
