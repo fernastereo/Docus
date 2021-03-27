@@ -34,7 +34,7 @@ class HomeController extends Controller
         }else{
             $documents = Document::where('company_id', Auth::user()->company_id)->orderBy('created_at', 'desc')->paginate(10);
         }
-        dd($documents);
+        // dd($documents);
         return view('home', ['documents' => $documents]);
     }
 }
