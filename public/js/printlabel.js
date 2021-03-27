@@ -68,7 +68,7 @@
             <HorizontalAlignment>Center</HorizontalAlignment>\
             <QuietZonesPadding Left="0" Top="0" Right="0" Bottom="0" />\
         </BarcodeObject>\
-        <Bounds X="2139.37209302325" Y="114.418604651163" Width="2779.62790697674" Height="747.906976744186" />\
+        <Bounds X="2139.37209302325" Y="114.418604651163" Width="2779.62790697673" Height="747.906976744186" />\
     </ObjectInfo>\
     <ObjectInfo>\
         <TextObject>\
