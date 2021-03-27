@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(Auth::user()->company_id);
         if(Auth::user()->profile_id == 3){
             $documents = Document::where([
                 ['user_id', Auth::user()->id], 
