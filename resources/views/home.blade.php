@@ -46,14 +46,17 @@
                       @endif
                       <small class="text-capitalize">Radicado Por: {{ $document->reception->user->name }}</small>
                     </th>
-                    <td></td>
+                    <td>{{ $document->typedocument->name }}</td>
                     <td>{{ date('d-m-Y', strtotime($document->daterec)) }}</td>
                     <td>
                       <i class="@if($document->category_id == 1)fas fa-exclamation-triangle rojo @elseif($document->category_id == 2)fas fa-check-square amarillo @elseif($document->category_id == 3)fas fa-check-circle verde @endif"></i> 
                     </td>
                     <td>{{ $document->sender}}</td>
                     <td class="text-uppercase">{{ $document->userenc($document->user_id) }}</td>
-                    <td>
+                    <td>@if($document->state_id == 1)<span class="badge badge-danger">{{ $document->state->name }}</span>
+                        @elseif($document->state_id == 2) <span class="badge badge-warning">{{ $document->state->name }}</span>
+                        @elseif($document->state_id == 3) <span class="badge badge-success">{{ $document->state->name }}</span>
+                        @endif
                     </td>
                     <td>
                       @if(!$document->filename)
