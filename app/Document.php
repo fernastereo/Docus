@@ -26,7 +26,7 @@ class Document extends Model
     ];
 
     public function typedocument(){
-    	return $this->belongsTo('App\Typedocument', 'typedocument_id');
+    	return $this->belongsTo(Typedocument::class);
     }
 
     public function category(){
