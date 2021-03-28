@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Document;
 use App\category;
-use App\Typedocument;
+use App\typedocument;
 use App\Reception;
 use App\Response;
 use App\User;
