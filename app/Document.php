@@ -30,7 +30,7 @@ class Document extends Model
     }
 
     public function category(){
-    	return $this->belongsTo(Category::class);
+    	return $this->belongsTo(category::class);
     }
 
     public function user(){
@@ -38,7 +38,7 @@ class Document extends Model
     }
 
     public function state(){
-    	return $this->belongsTo(State::class);
+    	return $this->belongsTo(state::class);
     }
 
     public function responses(){
