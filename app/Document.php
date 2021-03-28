@@ -26,11 +26,11 @@ class Document extends Model
     ];
 
     public function typedocument(){
-    	return $this->belongsTo(typedocument::class);
+    	return $this->belongsTo(Typedocument::class);
     }
 
     public function category(){
-    	return $this->belongsTo(category::class);
+    	return $this->belongsTo(Category::class);
     }
 
     public function user(){
@@ -38,7 +38,7 @@ class Document extends Model
     }
 
     public function state(){
-    	return $this->belongsTo(state::class);
+    	return $this->belongsTo(State::class);
     }
 
     public function responses(){
