@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Document;
-use App\Category;
+use App\category;
 use App\Typedocument;
 use App\Reception;
 use App\Response;
