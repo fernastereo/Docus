@@ -26,7 +26,7 @@ class Document extends Model
     ];
 
     public function typedocument(){
-    	return $this->belongsTo(Typedocument::class);
+    	return $this->belongsTo(typedocument::class);
     }
 
     public function category(){
