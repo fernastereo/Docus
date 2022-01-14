@@ -105,7 +105,7 @@
 					</div>
 					<div class="card-footer d-flex justify-content-between">
 						<button id="printButton" class="btn btn-primary btn-sm"><i class="fas fa-barcode"></i> Imprimir Recibido</button>
-	          <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
+						<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
 					</div>
 				</form>
 			</div>

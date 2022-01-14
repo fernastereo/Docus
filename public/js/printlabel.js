@@ -47,7 +47,7 @@
         <RoundRectangle X="0" Y="0" Width="1581" Height="5040" Rx="270" Ry="270" />\
     </DrawCommands>\
     <ObjectInfo>\
-        <BarcodeObject>\
+        <TextObject>\
             <Name>cbarras</Name>\
             <ForeColor Alpha="255" Red="0" Green="0" Blue="0" />\
             <BackColor Alpha="0" Red="255" Green="255" Blue="255" />\
@@ -57,18 +57,22 @@
             <IsVariable>False</IsVariable>\
             <GroupID>-1</GroupID>\
             <IsOutlined>False</IsOutlined>\
-            <Text>CU120180625-0013</Text>\
-            <Type>Code128Auto</Type>\
-            <Size>Small</Size>\
-            <TextPosition>Bottom</TextPosition>\
-            <TextFont Family="Arial" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False" />\
-            <CheckSumFont Family="Arial" Size="8" Bold="False" Italic="False" Underline="False" Strikeout="False" />\
-            <TextEmbedding>None</TextEmbedding>\
-            <ECLevel>0</ECLevel>\
-            <HorizontalAlignment>Center</HorizontalAlignment>\
-            <QuietZonesPadding Left="0" Top="0" Right="0" Bottom="0" />\
-        </BarcodeObject>\
-        <Bounds X="2139.37209302325" Y="114.418604651163" Width="2779.62790697673" Height="747.906976744186" />\
+            <HorizontalAlignment>Left</HorizontalAlignment>\
+            <VerticalAlignment>Top</VerticalAlignment>\
+            <TextFitMode>AlwaysFit</TextFitMode>\
+            <UseFullFontHeight>True</UseFullFontHeight>\
+            <Verticalized>False</Verticalized>\
+            <StyledText>\
+                <Element>\
+                    <String xml:space="preserve">CU120180625-0013</String>\
+                    <Attributes>\
+                        <Font Family="Arial" Size="14" Bold="true" Italic="False" Underline="False" Strikeout="False" />\
+                        <ForeColor Alpha="255" Red="0" Green="0" Blue="0" HueScale="100" />\
+                    </Attributes>\
+                </Element>\
+            </StyledText>\
+        </TextObject>\
+        <Bounds X="2139.37209302325" Y="114.418604651163" Width="2760.62790697673" Height="740.906976744186" />\
     </ObjectInfo>\
     <ObjectInfo>\
         <TextObject>\
