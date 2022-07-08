@@ -71,7 +71,7 @@
 						</div>
 					</div>
 					<div class="card-footer d-flex justify-content-end">
-	          <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
+						<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
 					</div>
 				</form>
 			</div>

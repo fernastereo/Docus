@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<script src="{{ asset('js/barcode.min.js') }}"></script>
+<script src="{{ asset('js/print.min.js') }}"></script>
+<script src="{{ asset('js/printlabel.js') }}" defer></script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -108,11 +111,19 @@
 						<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar Datos</button>
 					</div>
 				</form>
+				<div id="barcodeContainer" style="display: block; width: 45%; position: relative; left: 500px; font-family: Arial, Helvetica, sans-serif; font-size: 9pt;">
+					<svg style="width:100px;" id="barcode"></svg>
+					<div style="position: relative; top: -25px;">
+						<p style="margin: 0;">Remitente: {{ $document->sender }}</p>
+						<div style="display: flex; justify-content: flex-start;">
+							<p style="margin: 0;">Fecha: {{ date('d-m-Y', strtotime($document->daterec)) }}</p>
+							<p style="margin: 0 0 0 20px;">Folios: {{ $document->pages }}</p>
+						</div>
+						<p style="margin: 0;">Asunto: {{ $document->typedocument->name }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js"
-        type="text/javascript" charset="UTF-8"> </script>
-<script src="{{ asset('js/printlabel.js') }}" defer></script>
 @endsection
