@@ -72,7 +72,7 @@
                           @endif
                       </td>
                     @endif
-                   <td>@if($document->state_id == 1)
+                    <td>@if($document->state_id == 1)
                           <a href="{{ route('documents.response', $document->id) }}" class="btn btn-success btn-sm"><i class="far fa-check-square"></i> Responder</a>
                         @elseif($document->state_id == 2)
                           <a href="{{ route('documents.response', $document->id) }}" class="btn btn-success btn-sm"><i class="far fa-check-square"></i> Responder</a>

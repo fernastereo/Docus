@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Document;
@@ -12,6 +13,7 @@ use App\User;
 use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateDocumentRequest;
+use App\Http\Resources\DocumentCollection;
 
 class DocumentController extends Controller
 {
@@ -32,7 +34,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        $now = new \DateTime();   
+        $now = new \DateTime();
         $typedocuments = Typedocument::get();
         return view('documents.create', ['typedocuments' => $typedocuments]);
     }
@@ -67,7 +69,7 @@ class DocumentController extends Controller
         $document->codedocument = $codedocument;
         $consecutive = Auth::user()->company->consecutive;
 
-        if($request->hasFile('filename')){
+        if ($request->hasFile('filename')) {
             //Se Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
@@ -98,7 +100,7 @@ class DocumentController extends Controller
         $consecutive++;
         $company = Company::where('id', Auth::user()->company_id)->update(['consecutive' => $consecutive]);
 
-        if($document){
+        if ($document) {
             return redirect()->route('documents.show', $document->id)->with('success', 'Documento guardado');
         }
 
@@ -115,6 +117,15 @@ class DocumentController extends Controller
     {
         // dd($document);
         return view('documents.show', ['document' => $document]);
+    }
+
+    public function showDocuments($company_id, $start, $end)
+    {
+        $documents = Document::with('typedocument')->where('company_id', $company_id)
+            ->whereBetween('daterec', [$start, $end])
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return new DocumentCollection($documents);
     }
 
     public function showresponse(Document $document)
@@ -134,7 +145,7 @@ class DocumentController extends Controller
         $users = User::where([
             ['company_id', Auth::user()->company_id]
         ])->whereIn('profile_id', [1, 3])
-        ->get();
+            ->get();
         $categories = Category::get();
         return view('documents.edit', ['document' => $document, 'users' => $users, 'categories' => $categories]);
     }
@@ -162,14 +173,14 @@ class DocumentController extends Controller
             'comments'      => $request->input('comments'),
         ]);
 
-        if($request->input('user_id')){
+        if ($request->input('user_id')) {
             $document->user_id = $request->input('user_id');
             $document->state_id = 2;
         }
-        if($request->input('category_id')){
+        if ($request->input('category_id')) {
             $document->category_id = $request->input('category_id');
         }
-        if($request->hasFile('filename')){
+        if ($request->hasFile('filename')) {
             //Se Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
@@ -181,16 +192,17 @@ class DocumentController extends Controller
         }
         $document->save();
 
-        if($document){
+        if ($document) {
             return redirect()->route('home');
         }
 
         return back()->withInput()->with('errors', 'Ocurrió un error al guardar el registro');
     }
 
-    public function updatefilename(Request $request, Document $document){
+    public function updatefilename(Request $request, Document $document)
+    {
         //dd($request);
-        if($request->hasFile('filename')){
+        if ($request->hasFile('filename')) {
             //Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
@@ -202,7 +214,7 @@ class DocumentController extends Controller
         }
         $document->save();
 
-        if($document){
+        if ($document) {
             return redirect()->route('home');
         }
 
@@ -219,7 +231,7 @@ class DocumentController extends Controller
             'document_id'   => $request->input('document_id'),
         ]);
 
-        if($request->hasFile('filename')){
+        if ($request->hasFile('filename')) {
             //Guardo el contenido del archivo en la variable $fileContents:
             $fileContents = $request->file('filename');
             //Guardo la ruta dentro del bucket donde se almacenó el archivo en la variable $storagePath:
@@ -235,7 +247,7 @@ class DocumentController extends Controller
         $document->state_id = 3;
         $document->save();
 
-        if($response){
+        if ($response) {
             return redirect()->route('home');
         }
 
@@ -252,5 +264,4 @@ class DocumentController extends Controller
     {
         //
     }
-
 }

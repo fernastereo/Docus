@@ -29,4 +29,5 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('documents/showresponse/{document}', 'DocumentController@showresponse')->name('documents.showresponse');	
 	Route::post('documents/responsedocument', 'DocumentController@responsedocument')->name('documents.response.document');	
 	Route::put('documents/updatefilename/{document}', 'DocumentController@updatefilename')->name('documents.updatefilename');
+	Route::get('reports/report-received-documents', 'ReportController@receivedDocuments');
 });
